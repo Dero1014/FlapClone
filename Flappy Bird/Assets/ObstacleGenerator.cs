@@ -1,34 +1,43 @@
-﻿using System.Collections;
+﻿/*
+ * Script for spawning obstacles from pool
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
 {
-    public GameObject Prefab;
     public float SpawnTime;
-
+    public float RandomRange;
     private float _timer;
 
     void Start()
     {
-        //set off the spawn as soon as it starts
+        //sets off the spawn as soon as it starts
         _timer = SpawnTime;
     }
 
     void Update()
     {
-        _timer += Time.deltaTime;
-
-        if (_timer >= SpawnTime)
+        if (Timer())
         {
-            //rand pos thingyyy
+            //Create a random position on y axis
             Vector3 randPosition = transform.position;
-            randPosition.y += Random.Range(-2.5f, 2.5f);
+            randPosition.y += Random.Range(-RandomRange, RandomRange);
 
             //spawns obstacle
-            Instantiate(Prefab, randPosition, Quaternion.identity);
+            var instance = PoolingScript.Instance.GetFromPool();
+            instance.transform.position = randPosition;
             _timer = 0;
         }
 
     }
+
+    bool Timer()
+    {
+        _timer += Time.deltaTime;
+        return (_timer >= SpawnTime) ? true : false;
+    }
+
 }

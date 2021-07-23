@@ -1,27 +1,27 @@
-﻿using System.Collections;
+﻿/*
+ * Script for moving obstacles and removing them after a certian distance
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
     public float Speed;
-
-    private Rigidbody2D _rb;
-
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
+    public float XVectorDepth;
 
     void Update()
     {
-        _rb.velocity = Vector3.left * Speed;
+        transform.Translate(new Vector3(-Speed, 0, 0));
+        CheckDistance();
+    }
 
-
-        if (transform.position.x <= -5)
+    void CheckDistance()
+    {
+        if (transform.position.x < XVectorDepth)
         {
-            Destroy(gameObject);
+            PoolingScript.Instance.AddToPool(gameObject);
         }
-
     }
 }
