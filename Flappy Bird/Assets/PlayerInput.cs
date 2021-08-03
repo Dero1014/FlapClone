@@ -7,12 +7,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerInput : MonoBehaviour
 {
+
     PlayerActions _pa;
 
-    void Start()
+    private void Start()
     {
         _pa = GetComponent<PlayerActions>();
     }
@@ -20,7 +22,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (UnityEngine.Input.GetMouseButtonDown(0))
         {
             // Call the jump function
             // _pa.Jump() - calling it directly will not sync the input with the physics correctly better option

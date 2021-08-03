@@ -5,7 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 struct GameCondition
 {
     public bool startGame;
@@ -17,6 +17,7 @@ public class UIScript : MonoBehaviour
 {
     public GameObject StartPanel;
     public GameObject TapPanel;
+    public GameObject RestartPanel;
 
     private PlayerInput _pi;
     private ObstacleGenerator _og;
@@ -81,6 +82,16 @@ public class UIScript : MonoBehaviour
             TapPanel.GetComponent<Animator>().SetBool("Tap", true);
             _pi.GetComponent<Rigidbody2D>().simulated = true;
         }
+    }
+
+    public void Dead()
+    {
+        RestartPanel.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

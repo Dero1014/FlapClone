@@ -16,7 +16,7 @@ public class PlayerActions : MonoBehaviour
 
     void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();    
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -62,6 +62,8 @@ public class PlayerActions : MonoBehaviour
         {
             obstacle.Speed = 0;
         }
+
+        GameObject.FindObjectOfType<UIScript>().Dead();
 
         //play death animation
         //restart
