@@ -6,11 +6,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActions : MonoBehaviour
+public class PlayerActions : PlayerComponents
 {
-    public float JumpForce;
+    [SerializeField]
+    private float JumpForce;
 
-    private Rigidbody2D _rb;
     private bool _jump = false;
 
     /*  Singleton start */
@@ -20,7 +20,6 @@ public class PlayerActions : MonoBehaviour
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
         PlayerInputSystem.instance.JumpInput += Jump;
     }
 
