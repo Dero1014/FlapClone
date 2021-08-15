@@ -2,12 +2,15 @@
 /*  This script holds player actions to be executed on input command  */
 /*====================================================================*/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerActions : PlayerComponents
 {
+    public event Action OnDeath;
+
     [SerializeField]
     private float JumpForce;
 
@@ -41,6 +44,11 @@ public class PlayerActions : PlayerComponents
             _rb.velocity = Vector2.zero; // to keep a constant jump height
             _rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnDeath?.Invoke();
     }
 
 }

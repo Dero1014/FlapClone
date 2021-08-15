@@ -17,18 +17,21 @@ public class ObstacleSpawn : MonoBehaviour
     private void Start()
     {
         // To instantly start spawning the first obj
-        _timer = _spawnTimer;
+        _timer = _spawnTimer - 0.01f;
     }
 
     void Update()
     {
-        Spawn(SpawnTimer());
+        Spawn(SpawnTimer(GameManager.instance.SpawnEnabled));
     }
 
     // Timer that allows the Spawner to spawn one obj
-    bool SpawnTimer()
+    bool SpawnTimer(bool timerStart)
     {
-        _timer += Time.deltaTime;
+        if (timerStart)
+        {
+            _timer += Time.deltaTime;
+        }
         return (_timer >= _spawnTimer);
     }
 

@@ -18,7 +18,10 @@ public class Obstacle : MonoBehaviour
         // Even if it isn't really a rigidbody anything that will eventually collide with a rigidbody has to have a
         // fixed update if it will
         // Result: Smoother interaction between the player and the obstacle
-        transform.Translate(Vector3.left * _speedModifier);    
+        if (GameManager.instance.ObstacleMovement)
+        {
+            transform.Translate(Vector3.left * _speedModifier);
+        }
     }
 
     private void Update()

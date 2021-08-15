@@ -12,12 +12,14 @@ public class UIAnimation : MonoBehaviour
     private Animator StartAnimator;
     [SerializeField]
     private Animator TapAnimator;
-    private Animator RestartAnimator;
+    [SerializeField]
+    private GameObject RestartAnimator;
 
     private void Start()
     {
         UIScript.instance.GameStart += StartAnimation;
         PlayerInputSystem.instance.JumpInput += TapAnimation;
+        PlayerActions.instance.OnDeath += RestartAnimation;
     }
 
     void StartAnimation()
@@ -32,7 +34,8 @@ public class UIAnimation : MonoBehaviour
 
     void RestartAnimation()
     {
-
+        // We use game object since it will only turn on the one animation as the object is turned on
+        RestartAnimator.SetActive(true);
     }
 
 
