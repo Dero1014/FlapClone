@@ -14,12 +14,15 @@ public class UIAnimation : MonoBehaviour
     private Animator TapAnimator;
     [SerializeField]
     private GameObject RestartAnimator;
+    [SerializeField]
+    private GameObject HighScoreAnimator;
 
     private void Start()
     {
         UIScript.instance.GameStart += StartAnimation;
         PlayerInputSystem.instance.JumpInput += TapAnimation;
         PlayerActions.instance.OnDeath += RestartAnimation;
+        PlayerActions.instance.OnDeath += HighScorePanel;
     }
 
     void StartAnimation()
@@ -38,5 +41,10 @@ public class UIAnimation : MonoBehaviour
         RestartAnimator.SetActive(true);
     }
 
+    void HighScorePanel()
+    {
+        // add animation later
+        HighScoreAnimator.SetActive(false);
+    }
 
 }

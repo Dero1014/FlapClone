@@ -10,6 +10,7 @@ using UnityEngine;
 public class PlayerActions : PlayerComponents
 {
     public event Action OnDeath;
+    public event Action OnScoreGain;
 
     [SerializeField]
     private float JumpForce;
@@ -49,6 +50,11 @@ public class PlayerActions : PlayerComponents
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnDeath?.Invoke();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        OnScoreGain?.Invoke();
     }
 
 }
