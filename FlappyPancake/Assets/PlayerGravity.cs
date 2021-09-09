@@ -17,7 +17,7 @@ public class PlayerGravity : PlayerComponents
 
     void Update()
     {
-        if (_rb.velocity.y < 0)
+        if (_rb.velocity.y <= 0)
         {
             _rb.velocity += Vector2.up * Physics2D.gravity * _gravityMultiplyer * Time.deltaTime;
         }

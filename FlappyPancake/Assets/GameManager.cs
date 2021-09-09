@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*============================================================*/
+/*  This script controls the game by setting up its modifiers */
+/*============================================================*/
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +16,8 @@ public class GameManager : MonoBehaviour
     private bool _playerDead = false;
     [HideInInspector]
     public bool ObstacleMovement = true;
+    [HideInInspector]
+    public bool GroundAnimation = true;
 
     /*  Singleton start */
     public static GameManager instance;
@@ -44,12 +51,17 @@ public class GameManager : MonoBehaviour
     void PlayerDead()
     {
         _playerDead = true;
+        // STOP PLAYER INPUT
+        PlayerInputSystem.instance.enabled = false;
 
         // STOP SPAWNING - Spawning enabled with _gameTapped in ObstacleSpawn.cs line 25
         SpawnEnabled = false;
 
         // STOP OBSTACLE MOVEMENT - Obstacle Movement disabled with ObstacleMovement in Obstacle.cs line 21 
         ObstacleMovement = false;
+
+        // STOP BACKGROUND MOVEMENT - Ground movement disabled with GroundAnimation in GroundAnimation.cs line 49  
+        GroundAnimation = false;
 
         // STOP PLAYER PHYSICS
         PlayerComponents._rb.simulated = false;

@@ -1,4 +1,6 @@
-﻿/*==============================================================*/
+﻿#define TESTING
+
+/*==============================================================*/
 /*  This script holds input events to be used by other scripts  */
 /*==============================================================*/
 using System;
@@ -28,6 +30,13 @@ public class PlayerInputSystem : MonoBehaviour
             JumpInput?.Invoke();
         }
     }
+
+#if TESTING
+    public void JumpTest()
+    {
+        JumpInput?.Invoke();
+    }
+#endif
 
 }
 

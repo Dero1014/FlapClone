@@ -29,6 +29,9 @@ public class HighScore : MonoBehaviour
     {
         _score++;
         _scoreText.text = _score.ToString();
+
+        if (_score > _highScore)
+            _highScore = _score;
     }
 
     void ShowHighScore()
