@@ -428,7 +428,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Flappy Pancake
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1132,6 +1132,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1704133804141245202, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+        type: 3}
+      propertyPath: m_Name
+      value: Mouse
+      objectReference: {fileID: 0}
     - target: {fileID: 3400076260218876818, guid: 991a642cb2aabad4d8ae97342ce1ea61,
         type: 3}
       propertyPath: m_Name
@@ -1240,6 +1245,27 @@ PrefabInstance:
     - target: {fileID: 3400076260218876830, guid: 991a642cb2aabad4d8ae97342ce1ea61,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400076260386556283, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+        type: 3}
+      propertyPath: m_Name
+      value: Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400076261163165280, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+        type: 3}
+      propertyPath: _tapIcon
+      value: 
+      objectReference: {fileID: 1717358820}
+    - target: {fileID: 3400076261163165280, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+        type: 3}
+      propertyPath: _clickImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 5bae182792258684483e288d99fafc35,
+        type: 3}
+    - target: {fileID: 3400076261610308218, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1719,9 +1745,11 @@ MonoBehaviour:
   SList:
   - clip: {fileID: 8300000, guid: 4e6f7ce221aec9f4c84ea33b2b031506, type: 3}
     source: {fileID: 0}
+    volume: 0.241
     name: Jump
   - clip: {fileID: 8300000, guid: c12d78e5c98d5e14a9fdf95e61461755, type: 3}
     source: {fileID: 0}
+    volume: 0.25
     name: Point
 --- !u!1 &1087402644
 GameObject:
@@ -2486,6 +2514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a6b4c6c78f29f4192d3eca4e2c442c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tapIcon: {fileID: 0}
+  _clickImg: {fileID: 0}
 --- !u!114 &1573577429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,6 +2781,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701441833}
   m_CullTransparentMesh: 0
+--- !u!114 &1717358820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3400076260386556261, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+    type: 3}
+  m_PrefabInstance: {fileID: 894737243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1874198266
 GameObject:
   m_ObjectHideFlags: 0
@@ -3017,10 +3059,9 @@ GameObject:
   - component: {fileID: 1967902087}
   - component: {fileID: 1967902086}
   - component: {fileID: 1967902085}
-  - component: {fileID: 1967902089}
   - component: {fileID: 1967902088}
-  - component: {fileID: 1967902090}
   - component: {fileID: 1967902091}
+  - component: {fileID: 1967902090}
   - component: {fileID: 1967902084}
   - component: {fileID: 1967902092}
   m_Layer: 0
@@ -3105,19 +3146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc54674efa47f644820a5bca534dc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1967902089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967902083}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1afc2b896bd5544d87567ea816918ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityMultiplyer: 4.14
 --- !u!95 &1967902090
 Animator:
   serializedVersion: 3

@@ -8,6 +8,8 @@ public class SoundList
 {
     public AudioClip clip;
     public AudioSource source;
+    [Range(0,1)]
+    public float volume;
     public string name;
 }
 
@@ -27,6 +29,7 @@ public class SoundManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
+            s.source.volume = s.volume;
         }
     }
 

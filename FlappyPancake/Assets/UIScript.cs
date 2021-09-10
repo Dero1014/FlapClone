@@ -6,16 +6,41 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
     public event Action GameStart;
 
+    [SerializeField]
+    private Image _tapIcon;
+    [SerializeField]
+    private Sprite _clickImg;
+
+    private DeviceType _dType;
+
+
     /*  Singleton start */
     public static UIScript instance;
     private void Awake() { instance = this; }
     /*  Singleton end   */
+
+    private void Start()
+    {
+        ImageSwitch();
+    }
+
+    private void ImageSwitch()
+    {
+        _dType = SystemInfo.deviceType;
+
+        if (_dType != DeviceType.Handheld)
+        {
+            // Switch out with the mouse img
+            _tapIcon.sprite = _clickImg;
+        }
+    }
 
     public void StartGame()
     {
