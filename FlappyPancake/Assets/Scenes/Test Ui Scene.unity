@@ -345,9 +345,11 @@ MonoBehaviour:
   SList:
   - clip: {fileID: 8300000, guid: 4e6f7ce221aec9f4c84ea33b2b031506, type: 3}
     source: {fileID: 0}
+    volume: 0
     name: Jump
   - clip: {fileID: 8300000, guid: c12d78e5c98d5e14a9fdf95e61461755, type: 3}
     source: {fileID: 0}
+    volume: 0
     name: Point
 --- !u!1 &1276569518
 GameObject:
@@ -1115,6 +1117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400076260338716674, guid: 991a642cb2aabad4d8ae97342ce1ea61,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991a642cb2aabad4d8ae97342ce1ea61, type: 3}

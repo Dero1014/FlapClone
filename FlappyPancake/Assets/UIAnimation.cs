@@ -13,6 +13,10 @@ public class UIAnimation : MonoBehaviour
     [SerializeField]
     private Animator TapAnimator;
     [SerializeField]
+    private Animator OptionsAnimator;
+    [SerializeField]
+    private GameObject OptionObject;
+    [SerializeField]
     private GameObject RestartAnimator;
     [SerializeField]
     private GameObject HighScoreAnimator;
@@ -20,9 +24,13 @@ public class UIAnimation : MonoBehaviour
     private void Start()
     {
         UIScript.instance.GameStart += StartAnimation;
+        UIScript.instance.Options += OptionsAnimations;
         PlayerInputSystem.instance.JumpInput += TapAnimation;
         PlayerActions.instance.OnDeath += RestartAnimation;
         PlayerActions.instance.OnDeath += HighScorePanel;
+
+        //Options
+
     }
 
     void StartAnimation()
@@ -47,4 +55,18 @@ public class UIAnimation : MonoBehaviour
         HighScoreAnimator.SetActive(false);
     }
 
+    void OptionsAnimations()
+    {
+        if (!OptionObject.activeSelf)
+        {
+            StartAnimator.SetTrigger("Options");
+            OptionObject.SetActive(true);
+        }
+        else
+        {
+            StartAnimator.SetTrigger("Options");
+            OptionsAnimator.SetTrigger("Options");
+        }
+        
+    }
 }

@@ -6,12 +6,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
     public event Action GameStart;
+    public event Action Options;
 
     [SerializeField]
     private Image _tapIcon;
@@ -20,6 +22,8 @@ public class UIScript : MonoBehaviour
 
     private DeviceType _dType;
 
+    [SerializeField]
+    private AudioSource[] sources;
 
     /*  Singleton start */
     public static UIScript instance;
@@ -50,6 +54,20 @@ public class UIScript : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameOptions()
+    {
+        sources = GameObject.FindObjectsOfType<AudioSource>();
+        Options?.Invoke();
+    }
+
+    public void OnVolumeChange(Slider slider)
+    {
+        foreach (AudioSource source in sources)
+        {
+            source.volume = slider.value;
+        }
     }
 
 }
