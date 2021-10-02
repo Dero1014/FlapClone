@@ -2181,6 +2181,7 @@ MonoBehaviour:
   _tapIcon: {fileID: 0}
   _clickImg: {fileID: 0}
   sources: []
+  ScorePanel: {fileID: 0}
 --- !u!114 &3400076261163165287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,12 +2194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63987ceec4fcb1140b736b141efe5167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartAnimator: {fileID: 3400076260338716686}
-  TapAnimator: {fileID: 3400076261610308196}
-  OptionsAnimator: {fileID: 3409396244010292438}
-  OptionObject: {fileID: 3016350449858013910}
-  RestartAnimator: {fileID: 3400076261291029917}
-  HighScoreAnimator: {fileID: 3400076259828901254}
+  UIAnimator: {fileID: 0}
 --- !u!114 &3400076261163165281
 MonoBehaviour:
   m_ObjectHideFlags: 0

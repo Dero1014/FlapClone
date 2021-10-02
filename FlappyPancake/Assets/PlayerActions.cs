@@ -2,7 +2,7 @@
 /*  This script holds player actions to be executed on input command  */
 /*====================================================================*/
 
-#define DEBUG
+//#define DEBUG
 
 using System;
 using System.Collections;
@@ -43,9 +43,6 @@ public class PlayerActions : PlayerComponents
         // calculate what the gravity and upwards velocity should be in order to get 
         _gravity = (2 * _jumpHeight) / Mathf.Pow(_jumpTime, 2);
         _upVelocity = (2 * _jumpHeight) / _jumpTime;
-#if DEBUG
-        print($"Gravity: {_gravity}, Jump velocity: {_upVelocity}");
-#endif
     }
 
     private void Update()

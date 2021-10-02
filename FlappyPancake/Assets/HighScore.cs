@@ -16,10 +16,13 @@ public class HighScore : MonoBehaviour
     private TextMeshProUGUI _highScoreText;
 
     private static int _highScore = 0;
+
     private int _score = -1; // so it starts from 0
 
     private void Start()
     {
+        _highScore = (SaveData.current.PlayerHS != null) ? SaveData.current.PlayerHS.HighScore : 0;
+
         PlayerActions.instance.OnScoreGain += UpdateScoreText;
         PlayerActions.instance.OnDeath += ShowHighScore;
         UpdateScoreText();
@@ -36,6 +39,9 @@ public class HighScore : MonoBehaviour
 
     void ShowHighScore()
     {
+        // Save highscore
+        SaveData.current.PlayerHS.HighScore = _highScore;
+
         string text = $"Your High Score is: {_highScore}\nYour Current Score is: {_score}";
         _highScoreText.text = text;
     }

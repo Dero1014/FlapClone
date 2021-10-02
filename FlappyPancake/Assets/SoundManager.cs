@@ -15,8 +15,9 @@ public class SoundList
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField]
-    private SoundList[] SList;
+
+    [HideInInspector]
+    public SoundList[] SList;
 
     /*  Singleton start */
     public static SoundManager instance;
@@ -28,6 +29,8 @@ public class SoundManager : MonoBehaviour
         foreach (SoundList s in SList)
         {
             s.source = gameObject.AddComponent<AudioSource>();
+            // Add the new source to the settings class
+
             s.source.clip = s.clip;
             s.source.volume = s.volume;
         }
@@ -43,4 +46,15 @@ public class SoundManager : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("a"))
+        {
+            GameSettings.current.VSettings.Sources = GameObject.FindObjectsOfType<AudioSource>();
+
+            print("KeyPressed");
+        }
+    }
+
 }

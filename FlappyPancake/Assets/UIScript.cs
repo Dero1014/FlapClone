@@ -10,9 +10,17 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[Serializable]
+public class ObjectData
+{
+    public string name;
+    public bool active;
+}
+
 public class UIScript : MonoBehaviour
 {
     public event Action GameStart;
+    public event Action OnRestart;
     public event Action Options;
 
     [SerializeField]
@@ -22,19 +30,21 @@ public class UIScript : MonoBehaviour
 
     private DeviceType _dType;
 
-    [SerializeField]
-    private AudioSource[] sources;
-
     /*  Singleton start */
     public static UIScript instance;
     private void Awake() { instance = this; }
     /*  Singleton end   */
+
+    //Rework aditions
+    [SerializeField]
+    private GameObject ScorePanel; 
 
     private void Start()
     {
         ImageSwitch();
     }
 
+    //Changes the tap image from a tap  to a click based on the device type
     private void ImageSwitch()
     {
         _dType = SystemInfo.deviceType;
@@ -51,6 +61,25 @@ public class UIScript : MonoBehaviour
         GameStart?.Invoke();
     }
 
+    public void EnableInput()
+    {
+        PlayerInputSystem.instance.enabled = true;
+    }
+
+    public void StartHighScore()
+    {
+        // add animation later
+        if (ScorePanel !=null)
+            ScorePanel.SetActive(true);
+        else
+            Debug.LogError("You fucked up you need to add a score panel");
+    }
+
+    public void Restart()
+    {
+        OnRestart?.Invoke();
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -58,16 +87,13 @@ public class UIScript : MonoBehaviour
 
     public void GameOptions()
     {
-        sources = GameObject.FindObjectsOfType<AudioSource>();
         Options?.Invoke();
     }
 
-    public void OnVolumeChange(Slider slider)
+
+    public void ButtonPress()
     {
-        foreach (AudioSource source in sources)
-        {
-            source.volume = slider.value;
-        }
+        SoundManager.instance.Play("Press");
     }
 
 }
