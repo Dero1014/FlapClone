@@ -1,2 +1,2 @@
 # FlapClone
-Making a flappy bird clone
+A clone of Flappy Bird.
